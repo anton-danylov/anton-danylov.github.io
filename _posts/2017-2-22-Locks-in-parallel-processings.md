@@ -1,9 +1,14 @@
 ---
 layout: post
-title: Using locks in parallel processing can make it twice slower than single threaded
+title: Locks should be used carefully 
 ---
+
+Using locks in parallel processing can make it twice slower than single threaded. So sometimes it could be better to use plain old single thread approach. 
+
+<!--more-->
+
 ### The code
-```c#
+```csharp
     class Program
     {
         private static readonly string _filePath = @"C:\access.log";
@@ -76,6 +81,9 @@ title: Using locks in parallel processing can make it twice slower than single t
     }
 ```
 ### Results
+
 TestSpeedForeachList() Time: 6991.1298 ms, Count: 501366
+
 TestSpeedParallelForList() Time: 11022.504 ms, Count: 501366
+
 TestSpeedParallelForConcurrencyBag() Time: 5173.9488 ms, Count: 501366
